@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
@@ -29,27 +29,12 @@ const ImbalanceChart = ({ chartData, onDateSelect }) => {
                     <Legend verticalAlign="top" height={36} />
                     <Line
                         type="monotone"
-                        dataKey="inflows"
-                        stroke="#8f678d"
-                        strokeWidth={3}
-                        dot={{ r: 5 }}
-                        activeDot={{ r: 8, onClick: (e) => onDateSelect(e.date) }} // Pass clicked date
-                    />
-                    <Line
-                        type="monotone"
-                        dataKey="outflows"
-                        stroke="#f44336"
-                        strokeWidth={3}
-                        dot={{ r: 5 }}
-                        activeDot={{ r: 8, onClick: (e) => onDateSelect(e.date) }} // Pass clicked date
-                    />
-                    <Line
-                        type="monotone"
                         dataKey="imbalance"
                         stroke="#3f51b5"
                         strokeWidth={3}
                         dot={{ r: 5 }}
-                        activeDot={{ r: 8, onClick: (e) => onDateSelect(e.date) }} // Pass clicked date
+                        activeDot={{ r: 8 }}
+                        onClick={(e) => onDateSelect(e.activeLabel)} // Pass selected date
                     />
                 </LineChart>
             </ResponsiveContainer>

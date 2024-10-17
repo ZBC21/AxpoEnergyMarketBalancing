@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Energy Imbalance Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Energy Imbalance Calculator is a web application designed to retrieve and display energy imbalance data from a provided API. It calculates imbalances for balancing circles based on forecast data from energy producers and consumers. The application allows users to view hourly imbalances at both the balancing circle and member levels.
 
-In the project directory, you can run:
+## Requirements
 
-### `npm start`
+### 1. Retrieve Data and Calculate Imbalances
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Utilize the **Axpo.Challenge.Balancing** NuGet package to query the API:
+  - Retrieve a list of balancing circles and their associated members from `/api/v1/balancing`.
+  - For each member, retrieve forecasted data using the endpoint `/api/v1/balancing/member/{id}/forecast`.
+  - Members can be categorized as either energy producers or energy consumers.
+  - Calculate the day-ahead imbalance for each hour using the formula:
+  
+    \[
+    \text{Imbalance}(t) = \text{Total Inflows}(t) - \text{Total Outflows}(t)
+    \]
+  
+    **Note:** Inflows are contributed by producers, while outflows are from consumers.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Display Data
 
-### `npm test`
+- Display the hourly imbalance data aggregated at the balancing circle level.
+- Implement a drill-down feature to view the breakdown of imbalance data at the member level:
+  - Show inflows from producers as positive values (+{forecast value}).
+  - Show outflows from consumers as negative values (-{forecast value}).
+  
+  **Note:** Imbalance data should be displayed only at the balancing circle level.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Nice to Have
 
-### `npm run build`
+- A README file that describes how to run the application and any key architectural decisions made.
+- Comments on potential improvements for future iterations.
+- Unit tests to ensure the functionality of the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. Code Submission
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Ensure that the solution includes all source code and that it compiles successfully.
+- Submit the solution via:
+  - A link to a hosted source control repository (e.g., GitHub).
+  - A cloud storage link to a zipped file.
+  - As a zipped email attachment.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ZBC21/AxpoEnergyMarketBalancing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Navigate to the project directory:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    cd your-repo
+    
+3. Install the required dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Start the application:
 
-## Learn More
+    npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Access the application in your browser at http://localhost:3000.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Features
+- Data Retrieval: Efficiently fetches balancing circles and member forecasts using RESTful API calls.
+- Imbalance Calculation: Accurately computes inflows and outflows to determine energy imbalances for each balancing circle.
+- Data Visualization: Presents imbalance data in a user-friendly manner with charts and tables.
 
-### Code Splitting
+## Drill-Down Feature Issues
+- The drill-down feature is intended to allow users to click on a balancing circle to view more detailed information about the inflows and outflows at the member level. However, some issues are being encountered:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Data Display: Currently, when a user selects a balancing circle, the detailed inflow and outflow values may not display correctly.
+- Implementation: The drill-down functionality needs to properly aggregate and display forecast values as positive for producers and negative for consumers.
 
-### Analyzing the Bundle Size
+## Steps to Troubleshoot
+- Check Data Structure: Ensure that the data structure returned from the API is correctly processed to separate producers and consumers.
+- Debugging: Add console logs to confirm that the expected data is being passed to the drill-down component.
+- Refactor Logic: Review and refactor the logic used to calculate and display inflows and outflows to ensure they align with the expected behavior.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Future Improvements
+- Implement better error handling for API calls to enhance user experience.
+- Add user authentication for personalized data retrieval.
+- Improve the UI for better responsiveness and user interaction.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

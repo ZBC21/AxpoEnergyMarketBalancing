@@ -1,0 +1,25 @@
+/* MembersForecastChart.css */
+.members-forecast-chart {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.forecast-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.inflows-outflows-container {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 200px;
+}
+
+.inflow-outflow-details {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -17,3 +17,13 @@
 .MemberDetails, .ImbalanceChart {
   margin-top: 30px;
 }
+
+.small-charts-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.small-charts-container > div {
+  width: 48%;  /* Each chart takes up half the width of the container */
+}

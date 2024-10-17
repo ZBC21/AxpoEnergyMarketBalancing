@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import CircleList from './components/CircleList';
 import MemberDetails from './components/MemberDetails';
 import ImbalanceChart from './components/ImbalanceChart';
+import InflowsChart from './components/InflowsChart';
+import OutflowsChart from './components/OutflowsChart';
 import MemberBreakdown from './components/MemberBreakdown';  // New component for drill-down
 import { getBalancingCircles, getMemberForecast } from './services/apiService';
 import './App.css';
@@ -86,8 +88,18 @@ const App = () => {
 
             {selectedCircleId && (
                 <>
+                    {/* Imbalance Line Chart */}
                     <ImbalanceChart chartData={chartData} onDateSelect={handleDateSelect} />
+
+                    {/* Two smaller charts for inflows and outflows */}
+                    <div className="small-charts-container" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+                        <InflowsChart chartData={chartData} onDateSelect={handleDateSelect} />
+                        <OutflowsChart chartData={chartData} onDateSelect={handleDateSelect} />
+                    </div>
+                    {/* Drill-down based on the selected date */}
                     <MemberBreakdown members={selectedCircleMembers} selectedDate={selectedDate} />
+
+                    {/* Member details breakdown */}
                     <MemberDetails members={selectedCircleMembers} />
                 </>
             )}

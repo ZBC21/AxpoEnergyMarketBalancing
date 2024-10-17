@@ -1,0 +1,62 @@
+.breakdown-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.breakdown-container h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.breakdown-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.breakdown-container li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.breakdown-container li:last-child {
+    border-bottom: none;
+}
+
+.breakdown-container strong {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Style for positive inflows (producers) */
+.breakdown-container li:has(.producer) {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+/* Style for negative outflows (consumers) */
+.breakdown-container li:has(.consumer) {
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* For the values shown (e.g., +200 MW or -150 MW) */
+.breakdown-container span {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.breakdown-container .producer {
+    color: #4caf50;
+}
+
+.breakdown-container .consumer {
+    color: #f44336;
+}

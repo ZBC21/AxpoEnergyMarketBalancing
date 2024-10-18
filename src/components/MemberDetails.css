@@ -2,6 +2,7 @@
     padding: 20px;
     background-color: #f7f9fc;
     font-family: 'Arial', sans-serif;
+    text-align: center;
 }
 
 .section-title {
@@ -68,4 +69,21 @@ ul {
 
 .icon-toggle.open {
     transform: rotate(180deg);
+}
+
+.member-breakdown {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.inflow-component, .outflow-component {
+    width: 45%;  /* Adjust as needed */
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
